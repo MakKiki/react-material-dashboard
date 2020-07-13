@@ -11,10 +11,11 @@ import ImageIcon from '@material-ui/icons/Image';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import SettingsIcon from '@material-ui/icons/Settings';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 import { Profile, SidebarNav, UpgradePlan } from './components';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   drawer: {
     width: 240,
     [theme.breakpoints.up('lg')]: {
@@ -37,7 +38,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Sidebar = props => {
+const Sidebar = (props) => {
   const { open, variant, onClose, className, ...rest } = props;
 
   const classes = useStyles();
@@ -82,6 +83,11 @@ const Sidebar = props => {
       title: 'Settings',
       href: '/settings',
       icon: <SettingsIcon />
+    },
+    {
+      title: 'Location',
+      href: '/location',
+      icon: <LocationOnIcon />
     }
   ];
 
@@ -91,18 +97,11 @@ const Sidebar = props => {
       classes={{ paper: classes.drawer }}
       onClose={onClose}
       open={open}
-      variant={variant}
-    >
-      <div
-        {...rest}
-        className={clsx(classes.root, className)}
-      >
+      variant={variant}>
+      <div {...rest} className={clsx(classes.root, className)}>
         <Profile />
         <Divider className={classes.divider} />
-        <SidebarNav
-          className={classes.nav}
-          pages={pages}
-        />
+        <SidebarNav className={classes.nav} pages={pages} />
         <UpgradePlan />
       </div>
     </Drawer>

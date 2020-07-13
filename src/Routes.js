@@ -14,7 +14,9 @@ import {
   Settings as SettingsView,
   SignUp as SignUpView,
   SignIn as SignInView,
-  NotFound as NotFoundView
+  NotFound as NotFoundView,
+  Location as LocationView,
+  InfluencerList as InfluencerListView,
 } from './views';
 
 const Routes = () => {
@@ -55,12 +57,12 @@ const Routes = () => {
         layout={MainLayout}
         path="/icons"
       />
-      <RouteWithLayout
+      {/* <RouteWithLayout
         component={AccountView}
         exact
         layout={MainLayout}
         path="/account"
-      />
+      /> */}
       <RouteWithLayout
         component={SettingsView}
         exact
@@ -79,6 +81,24 @@ const Routes = () => {
         layout={MinimalLayout}
         path="/sign-in"
       />
+      <RouteWithLayout
+        component={LocationView}
+        exact
+        layout={MainLayout}
+        path="/location"
+      />
+      <RouteWithLayout
+        component={InfluencerListView}
+        exact
+        layout={MainLayout}
+        path="/influencerList"
+      />
+      {/* <RouteWithLayout
+        component={CampaginView}
+        exact
+        layout={MainLayout}
+        path="/Campagin"
+      /> */}
       <RouteWithLayout
         component={NotFoundView}
         exact

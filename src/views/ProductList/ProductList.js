@@ -4,7 +4,7 @@ import { IconButton, Grid, Typography } from '@material-ui/core';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
-import { ProductsToolbar, ProductCard } from './components';
+import { ProductsToolbar, ProductTable } from './components';
 import mockData from './data';
 
 const useStyles = makeStyles(theme => ({
@@ -19,35 +19,33 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end'
-  }
+  },
+  typoSize: {
+    'font-size': '30px'
+  },
+  row: {
+    height: '42px',
+    display: 'flex',
+    alignItems: 'center',
+    marginTop: theme.spacing(1)
+  },
 }));
 
 const ProductList = () => {
   const classes = useStyles();
 
-  const [products] = useState(mockData);
+  const [users, setUsers] = useState(mockData);
 
   return (
     <div className={classes.root}>
+      <br/>
+      <Typography className={classes.typoSize}>All Products</Typography>
       <ProductsToolbar />
       <div className={classes.content}>
-        <Grid
-          container
-          spacing={3}
-        >
-          {products.map(product => (
-            <Grid
-              item
-              key={product.id}
-              lg={4}
-              md={6}
-              xs={12}
-            >
-              <ProductCard product={product} />
-            </Grid>
-          ))}
-        </Grid>
+        <ProductTable users={users} setUsers={setUsers}/>
       </div>
+
+
       <div className={classes.pagination}>
         <Typography variant="caption">1-6 of 20</Typography>
         <IconButton>
